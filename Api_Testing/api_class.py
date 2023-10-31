@@ -1,4 +1,4 @@
-# File contains API server methods
+# API methods
 
 import requests
 
@@ -22,20 +22,20 @@ class API_testing:
         return response.status_code
 
     # update data in the API server
-    def update_data(self, id, json_data):
-        id = str(id)
-        url = self.url + "/" + id
+    def update_data(self, _id, json_data):
+        _id = str(_id)
+        url = self.url + "/" + _id
         for data in self.fetch_data():
-            if data['id'] == id:
+            if data['id'] == _id:
                 response = requests.put(url, data=json_data)
                 print(response)
                 return response.status_code
 
     # delete data from the API server
-    def delete_data(self, id):
-        id = str(id)
-        url = self.url + "/" + id
+    def delete_data(self, _id):
+        _id = str(_id)
+        url = self.url + "/" + _id
         for data in self.fetch_data():
-            if data['id'] == id:
+            if data['id'] == _id:
                 response = requests.delete(url)
                 return response.status_code
